@@ -15,7 +15,7 @@
     include("functions/createTable.php");
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">CRUD App!</span>
+        <a class="navbar-brand" id="navLink" href="">CRUD App!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,8 +42,8 @@
         <div id="placeToLoad">
             <?php
             // Used this for move_uploaded_file error due to insufficient permissions
-            error_reporting(E_ALL);
-            ini_set('display_errors', 'On'); 
+            // error_reporting(E_ALL);
+            // ini_set('display_errors', 'On'); 
             ?>
 
             <!-- Sends the php code if the form for adding products has been submitted -->

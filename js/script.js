@@ -20,3 +20,7 @@ $('#remove').click(() => {
     placeToLoad.html("");
     placeToLoad.load("./functions/removeProduct.php")
 })
+$('#navLink').click((event) => {
+    event.preventDefault();
+    placeToLoad.html("");
+})
