@@ -1,4 +1,5 @@
 <?php
+/* Creates the database and table in the phpMyAdmin page */
 $servername = "localhost";
 
 $username = "root";
@@ -23,6 +24,7 @@ $dbname = "crud_app";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// id is primary key which auto incriments so not to have duplicates
 $sql = "CREATE TABLE IF NOT EXISTS products (
     id INT(50) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR(40) NOT NULL,
@@ -38,5 +40,6 @@ if ($conn->connect_error) {
     die("Connection Failed" . $conn->connect_error);
 }
 
+// Always close the connection to the database as a security measure
 $conn->close();
 ?>

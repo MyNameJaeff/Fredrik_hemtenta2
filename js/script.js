@@ -1,4 +1,8 @@
+// Selects the div where to load the data
 let placeToLoad = $("#placeToLoad");
+
+// Each button has a on click funtion which clears the div where the data is to be loaded
+// then loads the selected buttons php file using .load()
 $('#add').click(() => {
     placeToLoad.html("");
     placeToLoad.load("./functions/addProduct.php")
