@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM products"; // Selects every row inside the database for printing
 $result = $conn->query($sql);
 
 echo ("<div class='all-products'>");

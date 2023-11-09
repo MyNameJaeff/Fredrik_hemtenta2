@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Connect to bootstrap for styling purposes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -12,6 +13,7 @@
 
 <body>
     <?php
+    // Runs the php code for creating the table and database inside the sql server
     include("functions/createTable.php");
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -84,14 +86,16 @@
                 }
                 /* Wanted to remove the $_POST data with some kind of function, did not find anything that worked so went with header() instead */
                 ?>
+            <!-- Sends the PHP code if the remove form has been submitted -->
             <?php elseif (isset($_POST["removeSubmit"])) : ?>
                 <?php
+                // Connects to the database to remove an item
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
                 $id = $_POST["remWhat"];
-                $sql = "DELETE FROM products WHERE id=$id";
+                $sql = "DELETE FROM products WHERE id=$id"; // Removes said item from the database by the id of the item
                 if ($conn->query($sql) === TRUE) {
                     $conn->close();
                     header("Location: index.php");
@@ -100,14 +104,16 @@
                     echo "Error deleting record: " . $conn->error;
                 }
                 ?>
+            <!-- Sends the PHP code if the change form has been submitted -->
             <?php elseif (isset($_POST["changeSubmit"])) : ?>
                 <?php
+                // Conencts to the databse to change an item inside of it
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
                 $id = $_POST["changeWhat"];
-                if ($_FILES['image']['name'] != "") {
+                if ($_FILES['image']['name'] != "") { // If there is an image inputted change the src of the img in the database
                     $fileName = $_FILES['image']['name'];
                     $temp_name = $_FILES['image']['tmp_name'];
                     $location = 'img/';
@@ -115,7 +121,7 @@
                     move_uploaded_file($temp_name, $fullName);
                     echo $fullName;
                     $sql = "UPDATE products SET images='$fullName' WHERE id=$id";
-                    if (($conn->query($sql) === TRUE) && ($_POST["price"] == "")) {
+                    if (($conn->query($sql) === TRUE) && ($_POST["price"] == "")) { // If price does not have an input refresh the site to clear $_POST data
                         header("Location: index.php");
                         $conn->close();
                     } else {
@@ -124,7 +130,7 @@
                     }
                 }
 
-                if ($_POST["price"] != "") {
+                if ($_POST["price"] != "") { // If there is an input for price change, change the price inside the database
                     $conn = new mysqli($servername, $username, $password, $dbname);
                     $price = $_POST["price"];
                     $sql = "UPDATE products SET price=$price WHERE id=$id";
@@ -142,15 +148,14 @@
         </div>
     </main>
     <script>
-        const change = (element) => {
+        const change = (element) => { // If a <tr> element inside the change table is pressed add the values of said table row to the form
             var arr = Array.prototype.slice.call( element.children )
             $('#changeWhat').val(arr[0].innerText);
             $('#price').val(arr[3].innerText);
         }
-        const remove = (element) => {
+        const remove = (element) => {// If a <tr> element inside the remove table is pressed add the values of said table row to the form
             var arr = Array.prototype.slice.call( element.children )
             $('#remWhat').val(arr[0].innerText);
-
         }
     </script>
     <script src="js/script.js"></script>

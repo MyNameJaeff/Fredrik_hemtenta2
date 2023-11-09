@@ -6,7 +6,6 @@ let placeToLoad = $("#placeToLoad");
 $('#add').click(() => {
     placeToLoad.html("");
     placeToLoad.load("./functions/addProduct.php")
-    //window.location.href="./functions/addProduct.php";
 })
 $('#see').click(() => {
     placeToLoad.html("");
@@ -20,6 +19,8 @@ $('#remove').click(() => {
     placeToLoad.html("");
     placeToLoad.load("./functions/removeProduct.php")
 })
+
+// If the link inside the nav is clicked dont refresh site, and clear the placeToLoad element
 $('#navLink').click((event) => {
     event.preventDefault();
     placeToLoad.html("");

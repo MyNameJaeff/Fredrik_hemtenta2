@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM products"; // Selects every row inside the database for printing
 $result = $conn->query($sql);
 // prints a form for changing image/price which then sends it to the index file with what to change
 echo ("<div class='form-div'>
