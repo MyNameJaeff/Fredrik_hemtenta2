@@ -18,7 +18,7 @@ echo "
             </div>
             <div class='form-group'>
                 <label for='img'>Image:</label>
-                <input class='form-control-file' type='file' name='img' id='img' accept='image/*' required>
+                <input class='form-control' type='file' name='img' id='img' accept='image/*' required>
             </div>
             <input type='submit' class='btn btn-primary' value='Submit' name='addSubmit'>
         </form>

@@ -27,7 +27,7 @@ echo ("<div class='form-div'>
     </div>
     <div class='form-group'>
         <label for='image'>Image:</label>
-        <input class='form-control-file' type='file' id='image' name='image' accept='image/' >
+        <input class='form-control' type='file' id='image' name='image' accept='image/' >
     </div>
     <input type='submit' class='btn btn-primary' value='Submit' name='changeSubmit'>
 </form>

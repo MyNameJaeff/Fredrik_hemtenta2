@@ -26,3 +26,6 @@
 tr:hover{
     cursor: pointer;
 }
+.btn-primary{
+    margin-top: 10px;
+}
